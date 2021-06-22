@@ -21,5 +21,7 @@ This project is an ecommerce called Guitar shop, where we have products which ca
 - npm install
 - npm start
 
+#### A DB_HOST .env file must be created with the connection to the local or remote database of mongodb
+
 ### The project is in heroku for its test:
 - https://guitar-shop-node.herokuapp.com/

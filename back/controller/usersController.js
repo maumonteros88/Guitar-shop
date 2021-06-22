@@ -13,34 +13,39 @@ exports.index = (req, res) => {
   res.sendFile(login);
 };
 
-exports.auth = (req, res) => {
-  userModel
-    .authUser(req)
-    .then((result) => {
-      const userFound = result;
-
-      if (userFound) {
-        req.session.mail = userFound.mail;
-        req.session.firstname = userFound.firstname;
-        req.session.lastname = userFound.lastname;
-        req.session.pic = userFound.pic;
-        req.session.dateOfRegister = userFound.dateOfRegister;
-        req.session.idUser = userFound._id;
-        req.session.profile = userFound.profile === 'admin' ? true : false;
-        if (userFound.carrito != undefined) {
-          req.session.carritoCount = userFound.carrito.length;
+exports.auth = (req, res) => {  
+  if(req.body.mail!==""&& req.body.password!==""){
+    
+    userModel
+      .authUser(req)
+      .then((result) => {
+        const userFound = result;
+  
+        if (userFound) {
+          req.session.mail = userFound.mail;
+          req.session.firstname = userFound.firstname;
+          req.session.lastname = userFound.lastname;
+          req.session.pic = userFound.pic;
+          req.session.dateOfRegister = userFound.dateOfRegister;
+          req.session.idUser = userFound._id;
+          req.session.profile = userFound.profile === 'admin' ? true : false;
+          if (userFound.carrito != undefined) {
+            req.session.carritoCount = userFound.carrito.length;
+          }
+  
+          res.status(200).send({ success: true, message: 'ok' });
+        } else {
+          res
+            .status(200)
+            .send({ success: false, message: 'Datos de ingreso incorrectos' });
         }
-
-        res.status(200).send({ success: true, message: 'ok' });
-      } else {
-        res
-          .status(200)
-          .send({ success: false, message: 'Datos de ingreso incorrectos' });
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  else
+  { res.status(200).send({success:false,message:"Debe ingresar datos para la sesión"})}
 };
 
 exports.registerIndex = (req, res) => {

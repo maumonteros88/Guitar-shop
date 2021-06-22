@@ -1,0 +1,65 @@
+<div class="row  justify-content-center padding">
+    <div
+      class="
+        shadow-lg       
+        mb-5
+        bg-light
+        rounded
+        col-sm-7
+        justify-content-center
+        aling-items-center
+        p-5
+        d-flex
+        flex-column
+        border border-info
+        text-center
+      "
+    >
+      <h3>{{titulo}}</h3>
+      
+      <table class="table table-light">
+        <thead>
+          <tr>      
+           <th scope="col">Comprador</th>
+           <th scope="col">Mail</th>
+           <th scope="col">ID Comprador</th>
+          </tr>
+        </thead>
+      <tbody>     
+         <tr>     
+         <td>{{firstname}} {{lastname}}</td>
+          <td>{{mail}}</td>
+          <td>${{idUser}}</td>
+         </tr>     
+      </tbody>         
+   </table>
+   <h4>Detalle de compra</h4>
+    <table class="table table-light table-striped">
+        <thead>
+          <tr>      
+           <th scope="col">Marca</th>
+           <th scope="col">Modelo</th>
+           <th scope="col">precio</th>
+          </tr>
+        </thead>
+      <tbody>
+      {{#each carrito}}   
+         <tr>     
+         <td>{{this.model}}</td>
+          <td>{{this.detalles}}</td>
+          <td>${{number this.precio}}</td>
+         </tr>    
+       {{/each}}
+      </tbody>
+       <thead>
+          <tr>      
+           <th scope="col"></th>
+           <th scope="col">Total:</th>
+           <th scope="col">${{number total}}</th>
+          </tr>
+        </thead>       
+   </table>
+    <a class="btn btn-primary mb-2"  href="/home/finishBuy">Confirmar compra</a>
+    <a class="btn btn-success"  href="/home">Agregar mas productos</a>
+    </div>    
+  </div>

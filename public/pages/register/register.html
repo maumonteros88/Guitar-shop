@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../css/login.css" />
+    <title>Registro</title>
+  </head>
+  <body class="row bg-dark justify-content-center padding">
+    <div
+      class="
+        shadow-lg
+        p-3
+        mb-5
+        bg-dark
+        rounded
+        col-sm-4
+        justify-content-center
+        aling-items-center
+        p-4
+        d-flex
+        flex-column
+        border border-info
+        text-center
+      "
+    >
+      <h1 style="color: white">Registrarse</h1>
+      <form action="/users/newregister" method="post">
+        <div class="input-group mb-3">
+          <span class="input-group-text justify-content-center" style="width:50px" id="basic-addon1">N</span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre"
+            name="firstname"
+            aria-label="firstname"
+            aria-describedby="basic-addon1"
+            required
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text justify-content-center" style="width:50px" id="basic-addon1">A</span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Apellido"
+            name="lastname"
+            aria-label="lastname"
+            aria-describedby="basic-addon1"
+            required
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text justify-content-center" style="width:50px" id="basic-addon1">@</span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Mail"
+            name="mail"
+            aria-label="Mail"
+            aria-describedby="basic-addon1"
+            required
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text justify-content-center" style="width:50px" id="basic-addon1">**</span>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Contraseña"
+            name="password"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            required
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text justify-content-center" style="width:50px" id="basic-addon1">**</span>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Repita contraseña"
+            name="passrepeat"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            required
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text justify-content-center" style="width:50px" id="basic-addon1">URL</span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="URL imagen"
+            oninput="urlPreview()"
+            name="pic"
+            id="pic"
+            aria-label="pic"
+            aria-describedby="basic-addon1"
+            required
+          />
+        </div>
+        <img id="preview"  width="100px" height="100px" class="rounded mx-auto d-block rounded-circle" style="display: none !important" alt="...">
+       
+        <input class="btn btn-primary" type="submit" value="Registrarse" />
+      </form>
+    </div>
+    <script>
+    const urlPreview=()=>{
+    const urlPic = document.getElementById('pic');    
+    const imgPreview = document.getElementById('preview');
+    imgPreview.style="display: block !important; margin-bottom: 10px; object-fit: cover"
+    imgPreview.src = urlPic.value
+    }
+    </script>
+  </body>
+</html>

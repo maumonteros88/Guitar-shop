@@ -1,0 +1,20 @@
+body {
+  background-image: url("../img/fondo.jpg");
+  background-size: cover;
+  
+  backdrop-filter: blur(15px);
+  height:100vh;
+  
+}
+
+
+
+.row{
+  margin-right: 0;
+}
+
+.padding{
+  padding-bottom: 22%;
+  padding-top: 2%;
+ 
+}

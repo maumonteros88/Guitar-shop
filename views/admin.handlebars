@@ -1,0 +1,110 @@
+<div class="row justify-content-center padding">
+  <div class="shadow-lg p-3 mb-5 bg-light rounded col-sm-4 justify-content-center aling-items-center
+        p-4 d-flex flex-column border border-info text-center">      
+      <img src="{{pic}}" width="200px" height="200px" class="rounded mx-auto d-block rounded-circle" style="object-fit: cover" alt="...">
+        <p>Nombre: {{firstname}}</p>
+        <p>Apellido: {{lastname}}</p>
+        <p>Mail registrado: {{mail}}</p>
+        <p>Usted esta registrado desde: {{date}}</p>
+        <p>ID: {{idUser}}</p>
+      <a class="btn btn-outline-primary" href="/logout">Cerrar sesion</a>
+  </div>   
+  <div class="shadow-lg p-3 mb-5 bg-light rounded col-sm-4 justify-content-center aling-items-center
+        p-4 d-flex flex-column border border-info text-center">  
+        <h4>Registrar nuevo usuario admin</h4>    
+     <form action="/admin/registerAdmin" method="post">
+        <div class="input-group mb-3">
+          <span class="input-group-text justify-content-center" style="width:50px" id="basic-addon1">N</span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre"
+            name="firstname"
+            aria-label="firstname"
+            aria-describedby="basic-addon1"
+            required
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text justify-content-center" style="width:50px" id="basic-addon1">A</span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Apellido"
+            name="lastname"
+            aria-label="lastname"
+            aria-describedby="basic-addon1"
+            required
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text justify-content-center" style="width:50px" id="basic-addon1">@</span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Mail"
+            name="mail"
+            aria-label="Mail"
+            aria-describedby="basic-addon1"
+            required
+          />
+        </div>      
+        <div class="input-group mb-3">
+          <span class="input-group-text justify-content-center" style="width:50px" id="basic-addon1">**</span>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Contraseña"
+            name="password"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            required
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text justify-content-center" style="width:50px" id="basic-addon1">**</span>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Repita contraseña"
+            name="passrepeat"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            required
+          />
+        </div>
+        <div class="input-group mb-3">
+         <select class="form-select" aria-label="Default select example" name="profile">
+            <option selected >Seleccione el perfil de usuario</option>
+            <option value="admin">admin</option>
+            <option value="user">user</option>           
+         </select>
+        </div>
+          <div class="input-group mb-3">
+          <span class="input-group-text justify-content-center" style="width:50px" id="basic-addon1">URL</span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="URL imagen"
+            oninput="urlPreview()"
+            name="pic"
+            id="pic"
+            aria-label="pic"
+            aria-describedby="basic-addon1"
+            required
+          />
+        </div>
+        <img id="preview"  width="100px" height="100px" class="rounded mx-auto d-block rounded-circle" style="display: none !important" alt="...">
+        <input class="btn btn-primary" type="submit" value="Registrar" />
+      </form>
+  </div>    
+</div>
+
+  <script>
+    const urlPreview=()=>{
+    const urlPic = document.getElementById('pic');    
+    const imgPreview = document.getElementById('preview');
+    imgPreview.style="display: block !important; margin-bottom: 10px; object-fit: cover"
+    imgPreview.src = urlPic.value
+    }
+  </script>

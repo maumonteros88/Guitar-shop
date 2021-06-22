@@ -1,0 +1,8 @@
+body {
+  background-image: url("../../img/fondo.jpg");
+  background-size: cover;
+  backdrop-filter: blur(5px);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+

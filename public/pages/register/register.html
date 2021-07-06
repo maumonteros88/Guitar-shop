@@ -33,8 +33,8 @@
       "
     >
       <h1 style="color: white">Registrarse</h1>
-      <form action="/users/newregister" method="post">
-        <div class="input-group mb-3">
+      <form class="needs-validation" action="/users/newregister" method="post" novalidate>
+        <div class="input-group mb-3">         
           <span class="input-group-text justify-content-center" style="width:50px" id="basic-addon1">N</span>
           <input
             type="text"
@@ -43,8 +43,9 @@
             name="firstname"
             aria-label="firstname"
             aria-describedby="basic-addon1"
+            
             required
-          />
+          />          
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text justify-content-center" style="width:50px" id="basic-addon1">A</span>
@@ -67,6 +68,7 @@
             name="mail"
             aria-label="Mail"
             aria-describedby="basic-addon1"
+            pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
             required
           />
         </div>
@@ -110,9 +112,10 @@
         </div>
         <img id="preview"  width="100px" height="100px" class="rounded mx-auto d-block rounded-circle" style="display: none !important" alt="...">
        
-        <input class="btn btn-primary" type="submit" value="Registrarse" />
+        <input class="btn btn-primary" type="submit"  value="Registrarse" />
       </form>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script>
     const urlPreview=()=>{
     const urlPic = document.getElementById('pic');    
@@ -120,6 +123,27 @@
     imgPreview.style="display: block !important; margin-bottom: 10px; object-fit: cover"
     imgPreview.src = urlPic.value
     }
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
     </script>
   </body>
 </html>

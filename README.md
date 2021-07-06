@@ -15,7 +15,7 @@ This project is an ecommerce called Guitar shop, where we have products which ca
 - javascript 
 - CSS 
 - HTML 
-- Hanblebars
+- Handlebars
 
 #### To use it, you must download it and then within your code editor perform these actions:
 - npm install

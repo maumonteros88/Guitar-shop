@@ -6,6 +6,7 @@ This project is an ecommerce called Guitar shop, where we have products which ca
 
 ![loginGuitarShop](https://user-images.githubusercontent.com/21323980/124660449-96aa8280-de7c-11eb-89e9-30749eb20870.png)
 ![homeTest](https://user-images.githubusercontent.com/21323980/124661026-5a2b5680-de7d-11eb-8c1a-abd778b3714e.png)
+![perfilTest](https://user-images.githubusercontent.com/21323980/124661279-a9718700-de7d-11eb-87bd-60f5e9ab5171.png)
 
 ### :wrench: The technologies used:
 - Mongodb

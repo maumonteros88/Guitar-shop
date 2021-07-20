@@ -20,6 +20,7 @@ This project is an ecommerce called Guitar shop, where we have products which ca
   - Handlebars.numeral
   - Express-session
   - mongodb
+  - simplecrypt
 - javascript 
 - CSS 
 - HTML 

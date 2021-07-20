@@ -1,4 +1,12 @@
 const path = require('path');
+const environment_var = require('../config/environment_var');
+const simplecrypt = require('simplecrypt');
+
+const sc = simplecrypt({
+  password: environment_var.secret_key,
+  salt: '10',
+  method: 'aes256',
+});
 
 const userModel = require('../model/usersModel');
 
@@ -13,15 +21,16 @@ exports.index = (req, res) => {
   res.sendFile(login);
 };
 
-exports.auth = (req, res) => {  
-  if(req.body.mail!==""&& req.body.password!==""){
-    
+exports.auth = (req, res) => {
+  if (req.body.mail !== '' && req.body.password !== '') {
+    const pass_req = req.body.password;
     userModel
       .authUser(req)
       .then((result) => {
         const userFound = result;
-  
-        if (userFound) {
+        const pass_db = sc.decrypt(userFound.password);
+
+        if (pass_req === pass_db) {
           req.session.mail = userFound.mail;
           req.session.firstname = userFound.firstname;
           req.session.lastname = userFound.lastname;
@@ -32,7 +41,7 @@ exports.auth = (req, res) => {
           if (userFound.carrito != undefined) {
             req.session.carritoCount = userFound.carrito.length;
           }
-  
+
           res.status(200).send({ success: true, message: 'ok' });
         } else {
           res
@@ -43,9 +52,11 @@ exports.auth = (req, res) => {
       .catch((error) => {
         console.log(error);
       });
+  } else {
+    res
+      .status(200)
+      .send({ success: false, message: 'Debe ingresar datos para la sesión' });
   }
-  else
-  { res.status(200).send({success:false,message:"Debe ingresar datos para la sesión"})}
 };
 
 exports.registerIndex = (req, res) => {
@@ -67,7 +78,7 @@ exports.newRegister = async (req, res) => {
             firstname: data.firstname,
             lastname: data.lastname,
             pic: data.pic,
-            password: data.password,
+            password: sc.encrypt(data.password),
             dateOfRegister: dateOfRegister,
             profile: 'user',
           };
